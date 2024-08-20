@@ -1,0 +1,6 @@
+/target/
+/.classpath
+/.project
+/.settings/
+# src/main/webapp/VAADIN/themes/**/styles.css
+# src/main/webapp/VAADIN/themes/**/styles.css.cache
