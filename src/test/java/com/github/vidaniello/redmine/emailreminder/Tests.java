@@ -8,6 +8,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
 
+import com.taskadapter.redmineapi.RedmineManagerFactory;
+
 public class Tests {
 	
 	static {
@@ -30,6 +32,8 @@ public class Tests {
 	@Test
 	public void testGetAllProjects() {
 		try {
+			
+			//RedmineManagerFactory rmf = RedmineManagerFactory.
 			
 			int i = 0;
 			
