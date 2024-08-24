@@ -6,8 +6,11 @@ import java.net.URL;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.util.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import com.github.vidaniello.redmine.SitesConfiguration;
 import com.taskadapter.redmineapi.RedmineManagerFactory;
 
 public class Tests {
@@ -28,6 +31,23 @@ public class Tests {
 	}
 	
 	private Logger log = LogManager.getLogger();
+	
+	@Test
+	public void testWriteAndReadConfiguration() {
+		try {
+			
+			SitesConfiguration sc = SitesConfiguration.getDefaultBaseConfiguration();
+			
+			sc.saveToDefaultLocation();
+			
+			SitesConfiguration sc1 = SitesConfiguration.getFromDefaultLocation();
+			
+			Assertions.assertTrue(sc.getRedmineConfigurations().size()==sc1.getRedmineConfigurations().size());
+			
+		}catch (Exception e) {
+			log.error(e.getMessage(),e);
+		}
+	}
 	
 	@Test
 	public void testGetAllProjects() {
