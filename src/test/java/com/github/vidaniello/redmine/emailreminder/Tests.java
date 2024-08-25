@@ -3,6 +3,8 @@ package com.github.vidaniello.redmine.emailreminder;
 import java.io.File;
 import java.net.URI;
 import java.net.URL;
+import java.util.Collection;
+import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,7 +13,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import com.github.vidaniello.redmine.SitesConfiguration;
+import com.github.vidaniello.redmine.UtilApp;
+import com.taskadapter.redmineapi.RedmineManager;
 import com.taskadapter.redmineapi.RedmineManagerFactory;
+import com.taskadapter.redmineapi.bean.Project;
 
 public class Tests {
 	
@@ -36,7 +41,7 @@ public class Tests {
 	public void testWriteAndReadConfiguration() {
 		try {
 			
-			SitesConfiguration sc = SitesConfiguration.getDefaultBaseConfiguration();
+			SitesConfiguration sc = SitesConfiguration.getEmptySitesConfiguration();
 			
 			sc.saveToDefaultLocation();
 			
@@ -44,7 +49,7 @@ public class Tests {
 			
 			Assertions.assertTrue(sc.getRedmineConfigurations().size()==sc1.getRedmineConfigurations().size());
 			
-		}catch (Exception e) {
+		} catch (Exception e) {
 			log.error(e.getMessage(),e);
 		}
 	}
@@ -53,7 +58,13 @@ public class Tests {
 	public void testGetAllProjects() {
 		try {
 			
-			//RedmineManagerFactory rmf = RedmineManagerFactory.
+			Collection<RedmineManager> rms = UtilApp.getAllRedmineManager();
+			
+			for(RedmineManager rm : rms) {
+				
+				List<Project> allProjects = rm.getProjectManager().getProjects();
+				
+			}
 			
 			int i = 0;
 			

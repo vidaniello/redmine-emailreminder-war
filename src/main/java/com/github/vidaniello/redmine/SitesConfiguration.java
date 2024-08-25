@@ -67,7 +67,7 @@ public class SitesConfiguration {
 		return gson.fromJson(json, SitesConfiguration.class);
 	}
 	
-	public static SitesConfiguration getDefaultBaseConfiguration() {
+	public static SitesConfiguration getEmptySitesConfiguration() {
 		SitesConfiguration ret = new SitesConfiguration();
 		
 		RedmineConfiguration rc1 = new RedmineConfiguration();
